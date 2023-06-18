@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import classes from "./adminPage.module.css"
 import {useDispatch, useSelector} from "react-redux"
 import {getUsers} from "../../axios/usersApi"
+import AddTariff from "../../components/add/addTariff/AddTariff"
 
 function AdminPage() {
     const dispatch = useDispatch()
@@ -16,6 +17,7 @@ function AdminPage() {
 
     return (
         <div className={classes.container_content}>
+            <AddTariff/>
             <section className={classes.container_tarif}>
                 <div className={classes.head_tarif}>
                     <h2>Клиентская база</h2>
@@ -25,19 +27,32 @@ function AdminPage() {
                         <ul className={classes.people_tarif_content}>
                             <li className={classes.li_piople_tarif}>
                                 <div className={classes.block_avatar}>
-                                    <ul>
-                                        {
-                                            preloader ?
-                                                <h1>Loading......</h1>
-                                                :
-                                                users.map(user =>
-                                                    <li>
-                                                        <div><b>Логин</b> <span>{user.login}</span></div>
-                                                        <div><b>Email</b> <span>{user.email}</span></div>
-                                                    </li>
-                                                )
-                                        }
-                                    </ul>
+                                    {
+                                        preloader ?
+                                            <h1>Loading......</h1>
+                                            :
+                                            <table>
+                                                <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Логин</th>
+                                                    <th>Email</th>
+                                                    <th>Role</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {users.map(item => (
+                                                    <tr key={item.id}>
+                                                        <td>{item.id}</td>
+                                                        <td>{item.login}</td>
+                                                        <td>{item.email}</td>
+                                                        <td>{item.role}</td>
+                                                    </tr>
+                                                ))}
+                                                </tbody>
+                                            </table>
+                                    }
+
                                 </div>
                             </li>
                         </ul>

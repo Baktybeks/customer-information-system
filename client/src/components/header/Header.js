@@ -13,8 +13,6 @@ function Header() {
     const navigate = useNavigate()
     const {isAuth, user} = useSelector(state => state.userReducer)
 
-    const {tariffs} = useSelector(state => state.tariffReducer)
-
     const logOut = () => {
         dispatch(setIsAuth(false))
     }

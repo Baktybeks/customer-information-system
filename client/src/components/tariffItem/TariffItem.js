@@ -2,7 +2,7 @@ import React from 'react'
 import classes from "./tariffItem.module.css"
 import group from "../../img/Group.png"
 import carbon from "../../img/carbon.png"
-import {useNavigate, useParams} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 import {useDispatch, useSelector} from "react-redux"
 import {addUserTariff} from "../../axios/tariffApi"
 
@@ -36,7 +36,8 @@ function TariffItem({tariff}) {
             <p>{price} som/мес</p>
             <button
                 className={classes.btn_go}
-                onClick={addTarriff}>Подключить</button>
+                onClick={addTarriff}>Подключить
+            </button>
 
         </li>
     )

@@ -39,7 +39,7 @@ export const getUserTariffApi = (id) => {
     }
 }
 
-export const addTariff = (formData) => {
+export const addTariffApi = (formData) => {
     return async (dispatch) => {
         try {
             const data = await $api.post('api/tariff/', formData)
